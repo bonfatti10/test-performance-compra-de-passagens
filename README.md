@@ -3,6 +3,8 @@
 ## Descrição
 Este projeto foi desenvolvido para realizar testes de performance no processo de compra de passagens aéreas utilizando o **Gatling**. O site alvo dos testes é o [BlazeDemo](https://www.blazedemo.com), um exemplo de site de vendas de passagens. O objetivo é avaliar a escalabilidade do sistema sob carga, garantindo que ele atenda a uma taxa de 250 requisições por segundo com um percentil de 90% do tempo de resposta abaixo de 2 segundos.
 
+O projeto utiliza **Docker** para criar um ambiente isolado e facilitar a execução dos testes, evitando a necessidade de instalação manual do Gatling em cada máquina de desenvolvimento. Além disso, a pipeline de **GitHub Actions** está configurada para automatizar a execução dos testes sempre que há uma alteração no código, garantindo que a qualidade de performance seja continuamente avaliada ao longo do ciclo de desenvolvimento.
+
 ## Autor
 **Carlos Bonfatti**  
 MBA em Data Science & AI  
