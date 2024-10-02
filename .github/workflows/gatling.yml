@@ -17,17 +17,14 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build Docker image
-      run: docker build -t gatling-performance .
+      run: docker build -t gatling-simulation .
 
     - name: Run Gatling tests
       run: |
-        docker run --rm -v ${{ github.workspace }}/gatling-results:/opt/gatling/gatling/results gatling-performance << EOF
-        1
-        0
-        EOF
+        echo "1" | docker run --rm -i -v ${{ github.workspace }}/gatling-results:/opt/gatling/gatling/results gatling-simulation
 
     - name: Upload Gatling results
       uses: actions/upload-artifact@v3
       with:
         name: gatling-results
-        path: gatling-results/*.html
+        path: gatling-results/simulacao-gerarda/index.html

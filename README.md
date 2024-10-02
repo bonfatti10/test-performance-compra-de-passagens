@@ -24,18 +24,21 @@ Especialista em Qualidade de Software, Automação e Performance
    Para evitar a instalação manual do Gatling, utilizamos Docker para criar um ambiente isolado. O comando abaixo irá construir a imagem Docker com tudo o que você precisa:
 
    ```bash
-   docker build -t gatling-performance .
+   docker build -t gatling-simulation .
+
 3. **Execute o container com Gatling**  
    Após construir a imagem, execute o container que iniciará o Gatling, mapeando o diretório de resultados:
 
    ```bash
-   docker run -it --rm -v $(pwd)/gatling-results:/opt/gatling/gatling/results gatling-image
+   echo "1" | docker run --rm -i -v $(pwd)/gatling-results:/opt/gatling/gatling/results gatling-simulation 
+   
 
 4. **Acesse o relatório de performance**  
    Após a execução, o Gatling gera um relatório de performance detalhado. Para abrir o relatório no seu navegador, execute o seguinte comando:
+   exemplo:
 
    ```bash
-   open gatling-results/<nome-da-simulacao>/index.html
+   open gatling-results/ticketpurchasesimulation-20241002174031544/index.html
 
 ## Estrutura do Projeto
 

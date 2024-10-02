@@ -2,7 +2,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
-class BlazeDemoSimulation extends Simulation {
+class TicketPurchaseSimulation extends Simulation {
 
   val httpProtocol = http
     .baseUrl("https://www.blazedemo.com")
