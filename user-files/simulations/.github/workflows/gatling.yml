@@ -1,0 +1,29 @@
+name: Gatling Performance Test - Compra de Passagens
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t gatling-performance .
+
+    - name: Run Gatling tests in Docker
+      run: docker run --rm -v $(pwd)/gatling-results:/opt/gatling/gatling/results gatling-performance
+
+    - name: Upload Gatling results
+      uses: actions/upload-artifact@v2
+      with:
+        name: gatling-results
+        path: gatling-results/*.html
