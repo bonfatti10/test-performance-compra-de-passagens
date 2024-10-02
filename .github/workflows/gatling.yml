@@ -19,11 +19,11 @@ jobs:
     - name: Build Docker image
       run: docker build -t gatling-performance .
 
-    - name: Run Gatling tests in Docker
-      run: docker run --rm -v $(pwd)/gatling-results:/opt/gatling/gatling/results gatling-performance
+    - name: Run Gatling tests
+      run: docker run --rm -v ${{ github.workspace }}/gatling-results:/opt/gatling/gatling/results gatling-performance
 
     - name: Upload Gatling results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: gatling-results
         path: gatling-results/*.html
