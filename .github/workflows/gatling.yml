@@ -20,7 +20,11 @@ jobs:
       run: docker build -t gatling-performance .
 
     - name: Run Gatling tests
-      run: docker run --rm -v ${{ github.workspace }}/gatling-results:/opt/gatling/gatling/results gatling-performance -Dgatling.simulationClass=ticket-purchase-simulation
+      run: |
+        docker run --rm -v ${{ github.workspace }}/gatling-results:/opt/gatling/gatling/results gatling-performance << EOF
+        1
+        0
+        EOF
 
     - name: Upload Gatling results
       uses: actions/upload-artifact@v3
